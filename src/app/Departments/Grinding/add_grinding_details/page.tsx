@@ -32,6 +32,10 @@ export default function AddGrindingDetails() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderId, setOrderId] = useState<string>('');
 
+
+  
+  const API_BASE_URL = "https://erp-backend-murex.vercel.app" ;
+  
   useEffect(() => {
     const initializeGrinding = async () => {
       if (!filingId) {
@@ -47,7 +51,7 @@ export default function AddGrindingDetails() {
         setFormattedId(generatedGrindingId);
 
         const pouchResponse = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/filing/${prefix}/${date}/${month}/${year}/${number}/${subnumber}/pouches`
+          `${API_BASE_URL}/api/filing/${prefix}/${date}/${month}/${year}/${number}/${subnumber}/pouches`
         );
 
         const pouchResult = await pouchResponse.json();
@@ -137,7 +141,7 @@ const pouchData = pouches.map(pouch => ({
 
       console.log('[AddGrinding] Submitting data:', grindingData);
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/grinding/create`, {
+      const response = await fetch(`${API_BASE_URL}/api/grinding/create`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json'

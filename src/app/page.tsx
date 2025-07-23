@@ -10,7 +10,9 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   // API base URL (Uses `.env.local` for flexibility)
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ;
+  // const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ;
+  
+  const API_BASE_URL = "https://erp-backend-murex.vercel.app" ;
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ export default function Login() {
         body: JSON.stringify({ username, password }),
       });
 
+      
       const data = await response.json();
       setLoading(false);
 

@@ -6,7 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { z } from 'zod';
 
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+// const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+const apiBaseUrl = "https://erp-backend-murex.vercel.app" ;
 
 interface Details {
   Id: string;

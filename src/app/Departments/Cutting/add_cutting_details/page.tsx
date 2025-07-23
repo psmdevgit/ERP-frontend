@@ -35,6 +35,9 @@ export default function AddCuttingDetails() {
   const [orderId, setOrderId] = useState<string>('');
   const router = useRouter();
 
+  
+  const API_BASE_URL = "https://erp-backend-murex.vercel.app" ;
+
   useEffect(() => {
     const initializeCutting = async () => {
       if (!platingId) {
@@ -52,11 +55,11 @@ export default function AddCuttingDetails() {
         setFormattedId(generatedCuttingId);
 
         console.log('[Add Cutting] Fetching pouches from:', {
-          url: `${process.env.NEXT_PUBLIC_API_URL}/api/plating/${prefix}/${date}/${month}/${year}/${number}/${subnumber}/pouches`
+          url: `${API_BASE_URL}/api/plating/${prefix}/${date}/${month}/${year}/${number}/${subnumber}/pouches`
         });
 
         const pouchResponse = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/plating/${prefix}/${date}/${month}/${year}/${number}/${subnumber}/pouches`
+          `${API_BASE_URL}/api/plating/${prefix}/${date}/${month}/${year}/${number}/${subnumber}/pouches`
         );
 
         const pouchResult = await pouchResponse.json();
@@ -166,11 +169,11 @@ export default function AddCuttingDetails() {
       };
 
       console.log('[Add Cutting] Submitting to API:', {
-        url: `${process.env.NEXT_PUBLIC_API_URL}/api/cutting/create`,
+        url: `${API_BASE_URL}/api/cutting/create`,
         data: JSON.stringify(cuttingData, null, 2)
       });
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/cutting/create`, {
+      const response = await fetch(`${API_BASE_URL}/api/cutting/create`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json'

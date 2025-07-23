@@ -7,7 +7,9 @@ import { Button } from "@/components/ui/button";
 import { z } from 'zod';
 import { Label } from "@/components/ui/label";
 
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+// const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+const apiBaseUrl = "https://erp-backend-murex.vercel.app" ;
 
 interface Plating {
   Id: string;

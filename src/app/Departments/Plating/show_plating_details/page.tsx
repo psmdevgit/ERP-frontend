@@ -72,6 +72,9 @@ const PlatingDetailsPage = () => {
   const searchParams = useSearchParams();
   const platingId = searchParams.get('platingId');
 
+  
+  const API_BASE_URL = "https://erp-backend-murex.vercel.app" ;
+
   useEffect(() => {
     const fetchPlatingDetails = async () => {
       if (!platingId) {
@@ -89,7 +92,7 @@ const PlatingDetailsPage = () => {
           throw new Error('Invalid plating ID format');
         }
 
-        const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/plating-details/${prefix}/${date}/${month}/${year}/${number}`;
+        const apiUrl = `${API_BASE_URL}/api/plating-details/${prefix}/${date}/${month}/${year}/${number}`;
         console.log('[Plating Details] Fetching from:', apiUrl);
 
         const response = await fetch(apiUrl);

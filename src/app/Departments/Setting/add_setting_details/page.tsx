@@ -36,6 +36,11 @@ export default function AddSettingDetails() {
   const [orderId, setOrderId] = useState<string>('');
   const router = useRouter();
 
+  
+  
+  const API_BASE_URL = "https://erp-backend-murex.vercel.app" ;
+  
+
   useEffect(() => {
     const initializeSetting = async () => {
       if (!filingId && !grindingId) {
@@ -49,10 +54,10 @@ export default function AddSettingDetails() {
 
         if (filingId) {
           [prefix, date, month, year, number, subnumber  ] = filingId.split('/');
-          apiEndpoint = `${process.env.NEXT_PUBLIC_API_URL}/api/grinding/GRIND/${date}/${month}/${year}/${number}/${subnumber}/pouches`;
+          apiEndpoint = `${API_BASE_URL}/api/grinding/GRIND/${date}/${month}/${year}/${number}/${subnumber}/pouches`;
         } else if (grindingId) {
           [prefix, date, month, year, number, subnumber] = grindingId.split('/');
-          apiEndpoint = `${process.env.NEXT_PUBLIC_API_URL}/api/grinding/${grindingId}/pouches`;
+          apiEndpoint = `${API_BASE_URL}/api/grinding/${grindingId}/pouches`;
         }
 
         console.log('[AddSetting] ID parts:', { prefix, date, month, year, number, subnumber });
@@ -146,7 +151,7 @@ export default function AddSettingDetails() {
 
       console.log('[AddSetting] Submitting data:', settingData);
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/setting/create`, {
+      const response = await fetch(`${API_BASE_URL}/api/setting/create`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json'

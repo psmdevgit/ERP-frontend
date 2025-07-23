@@ -106,7 +106,9 @@ const OrderFormModal = ({ open, setOpen }: OrderFormModalProps) => {
   });
 
   /* ---------------------- API ---------------------- */
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+  // const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+const apiBaseUrl = "https://erp-backend-murex.vercel.app" ;
 
   useEffect(() => {
     fetchPartyLedgers();

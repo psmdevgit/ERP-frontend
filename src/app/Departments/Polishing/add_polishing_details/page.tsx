@@ -41,6 +41,9 @@ export default function AddPolishingDetails() {
   const [orderId, setOrderId] = useState<string>('');
   const [totalReceivedFromSetting, setTotalReceivedFromSetting] = useState(0);
 
+  
+  const API_BASE_URL = "https://erp-backend-murex.vercel.app" ;
+  
   useEffect(() => {
     const initializePolishing = async () => {
       if (!filingId && !grindingId && !settingId) {
@@ -75,11 +78,11 @@ export default function AddPolishingDetails() {
         // Construct the endpoint based on the API structure
         let endpoint;
         if (isGrinding) {
-          endpoint = `${process.env.NEXT_PUBLIC_API_URL}/api/grinding/GRIND/${date}/${month}/${year}/${number}/${subnumber}/pouches`;
+          endpoint = `${API_BASE_URL}/api/grinding/GRIND/${date}/${month}/${year}/${number}/${subnumber}/pouches`;
         } else if (fromSetting) {
-          endpoint = `${process.env.NEXT_PUBLIC_API_URL}/api/setting/SETTING/${date}/${month}/${year}/${number}/${subnumber}/pouches`;
+          endpoint = `${API_BASE_URL}/api/setting/SETTING/${date}/${month}/${year}/${number}/${subnumber}/pouches`;
         } else {
-          endpoint = `${process.env.NEXT_PUBLIC_API_URL}/api/setting/${prefix}/${date}/${month}/${year}/${number}/${subnumber}/pouches`;
+          endpoint = `${API_BASE_URL}/api/setting/${prefix}/${date}/${month}/${year}/${number}/${subnumber}/pouches`;
         }
 
         console.log('[AddPolishing] Endpoint details:', {
@@ -197,7 +200,7 @@ export default function AddPolishingDetails() {
 
       console.log('[AddPolishing] Submitting data:', polishingData);
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/polishing/create`, {
+      const response = await fetch(`${API_BASE_URL}/api/polishing/create`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json'

@@ -65,6 +65,9 @@ const SettingDetailsPage = () => {
   const searchParams = useSearchParams();
   const settingId = searchParams.get('settingId');
 
+  
+  const API_BASE_URL = "https://erp-backend-murex.vercel.app" ;
+  
   useEffect(() => {
     const fetchDetails = async () => {
       if (!settingId) {
@@ -76,7 +79,7 @@ const SettingDetailsPage = () => {
       try {
         const [prefix, date, month, year, number] = settingId.split('/');
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/setting-details/${prefix}/${date}/${month}/${year}/${number}`
+          `${API_BASE_URL}/api/setting-details/${prefix}/${date}/${month}/${year}/${number}`
         );
         const result = await response.json();
         

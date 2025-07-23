@@ -4,7 +4,9 @@ import { useSearchParams } from 'next/navigation';
 import { toast } from 'sonner';
 import { Input } from "@/components/ui/input";
 
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+// const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+const apiBaseUrl = "https://erp-backend-murex.vercel.app";
 
 interface CastingDetails {
   Id: string;

@@ -65,6 +65,8 @@ const DullDetailsPage = () => {
   const searchParams = useSearchParams();
   const dullId = searchParams.get('dullId');
 
+  const API_BASE_URL = "https://erp-backend-murex.vercel.app" ;
+  
   useEffect(() => {
     const fetchDetails = async () => {
       if (!dullId) {
@@ -78,11 +80,11 @@ const DullDetailsPage = () => {
         const [prefix, date, month, year, number] = dullId.split('/');
         console.log('[Show Dull] Fetching details for:', {
           prefix, date, month, year, number,
-          url: `${process.env.NEXT_PUBLIC_API_URL}/api/dull-details/${prefix}/${date}/${month}/${year}/${number}`
+          url: `${API_BASE_URL}/api/dull-details/${prefix}/${date}/${month}/${year}/${number}`
         });
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/dull-details/${prefix}/${date}/${month}/${year}/${number}`
+          `${API_BASE_URL}/api/dull-details/${prefix}/${date}/${month}/${year}/${number}`
         );      
         const result = await response.json();
         

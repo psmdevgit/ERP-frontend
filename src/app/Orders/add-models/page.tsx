@@ -18,7 +18,10 @@ const margin = 30;
 const summaryHeaderWidth = 150; // Fixed width for summary table columns
 
 const AddModel = () => {
- const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+//  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+const apiBaseUrl = "https://erp-backend-murex.vercel.app" ;
+
  const router = useRouter();
  const searchParams = useSearchParams();
  const orderId = searchParams.get('orderId');
