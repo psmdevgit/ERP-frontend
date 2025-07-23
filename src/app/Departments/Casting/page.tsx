@@ -906,7 +906,7 @@ const CastingForm = () => {
 
               {/* Submit Button */}
               <div className="mt-6">
-                <Button
+                {/* <Button
                   type="button"
                   onClick={() => {
                     console.log("Button clicked"); // Debug log
@@ -918,7 +918,37 @@ const CastingForm = () => {
                   } text-white py-2 px-4 rounded-md transition-colors`}
                 >
                   {loading ? 'Processing...' : 'Issue for Casting'}
-                </Button>
+                </Button> */}
+
+                <Button
+  type="button"
+  onClick={async () => {
+    console.log("Button clicked"); // Debug log
+    const confirmed = confirm("Are you sure you want to issue for casting?");
+    if (confirmed) {
+      try {
+        await handleSubmit(); // Wait for the async process
+        alert("Issue is successful ✅");
+      } catch (error) {
+        console.error("Issue failed:", error);
+        alert("Something went wrong while issuing!");
+      }
+    }
+  }}
+  disabled={
+    loading ||
+    !selectedOrders.length ||
+    !purity ||
+    !waxTreeWeight ||
+    inventoryItems.length === 0
+  }
+  className={`w-full ${
+    loading ? 'bg-black-400' : 'bg-red-600 hover:bg-red-700'
+  } text-white py-2 px-4 rounded-md transition-colors`}
+>
+  {loading ? 'Processing...' : 'Issue for Casting'}
+</Button>
+
               </div>
 
               {/* Debug information */}
