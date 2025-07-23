@@ -20,7 +20,7 @@ const summaryHeaderWidth = 150; // Fixed width for summary table columns
 const AddModel = () => {
 //  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const apiBaseUrl = "https://erp-server-r9wh.onrender.com" ;
+const apiBaseUrl = "https://erp-server-r9wh.onrender.com/" ;
 
  const router = useRouter();
  const searchParams = useSearchParams();
