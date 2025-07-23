@@ -12,7 +12,7 @@ export default function Login() {
   // API base URL (Uses `.env.local` for flexibility)
   // const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ;
   
-  const API_BASE_URL = "https://erp-backend-murex.vercel.app" ;
+  const API_BASE_URL = "https://erp-backend-black.vercel.app/" ;
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ export default function Login() {
     }
 
     try {
-      const response = await fetch(`${API_BASE_URL}/login`, {
+      const response = await fetch(`${API_BASE_URL}login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
